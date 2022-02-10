@@ -4,6 +4,7 @@ export interface IFood {
   price: number;
   description: string;
   image: string;
+  available: boolean;
 }
 
 export interface IEditingFood {
@@ -13,3 +14,9 @@ export interface IEditingFood {
   description: string;
   image: string;
 }
+
+export interface FormProps {
+  ref: any;
+  onSubmit: (data: object) => void;
+  initialData?: IEditingFood;
+};

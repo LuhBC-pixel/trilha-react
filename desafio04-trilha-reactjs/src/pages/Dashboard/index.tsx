@@ -57,4 +57,56 @@ const Dashboard = () => {
       console.log(err);
     }
   };
+
+  const handleDeleteFood = async (id: number) => {
+    await api.delete(`/foods/${id}`);
+
+    const foodsFiltered = foods.filter((food) => food.id !== id);
+
+    setFoods(foodsFiltered);
+  };
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
+
+  const toggleEditModal = () => {
+    setEditModalOpen(!editModalOpen);
+  };
+
+  const handleEditFood = (food: IFood) => {
+    setEditingFood(food);
+    setEditModalOpen(true);
+  };
+
+  return (
+    <>
+      <Header openModal={toggleModal} />
+      <ModalAddFood
+        isOpen={modalOpen}
+        setIsOpen={toggleModal}
+        handleAddFood={handleAddFood}
+      />
+      <ModalEditFood
+        isOpen={editModalOpen}
+        setIsOpen={toggleEditModal}
+        editingFood={editingFood}
+        handleUpdateFood={handleUpdateFood}
+      />
+
+      <FoodsContainer data-testid='foods-list'>
+        {foods &&
+          foods.map((food) => (
+            <Food
+              key={food.id}
+              food={food}
+              handleDelete={handleDeleteFood}
+              handleEditFood={handleEditFood}
+            />
+          ))}
+      </FoodsContainer>
+    </>
+  );
 };
+
+export default Dashboard;
