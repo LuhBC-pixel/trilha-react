@@ -4,15 +4,7 @@ import { useField } from '@unform/core';
 
 import { Container } from './styles';
 
-interface IconProps {
-  size: number;
-}
-
-interface InputProps {
-  name: string;
-  icon?: React.ComponentType<IconProps>;
-  placeholder?: string;
-}
+import { InputProps } from '../../types';
 
 const Input = ({ name, icon: Icon, placeholder }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);

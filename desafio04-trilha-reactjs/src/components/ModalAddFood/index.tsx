@@ -5,10 +5,12 @@ import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
+import { IFood } from '../../types';
+
 interface IModalAddFoodProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddFood: (data: object) => void;
+  handleAddFood: (data: IFood) => Promise<void>;
 }
 
 const ModalAddFood = ({
@@ -18,7 +20,7 @@ const ModalAddFood = ({
 }: IModalAddFoodProps) => {
   const formRef = useRef();
 
-  const handleSubmit = (data: object) => {
+  const handleSubmit = (data: IFood) => {
     handleAddFood(data);
     setIsOpen();
   };
