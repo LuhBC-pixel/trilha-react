@@ -8,7 +8,7 @@ const Modal = ({ children, isOpen, setIsOpen }: IModalProps) => {
 
   useEffect(() => {
     setModalStatus(isOpen);
-  }, []);
+  }, [isOpen]);
 
   return (
     <ReactModal
