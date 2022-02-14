@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --background-black: #121414;
+  --shape: #1f2729;
+  --text: #a8a8b3;
+  --title: #e1e1e6;
+  --yellow: #eba417;
+  --green: #04d361;
+  --blue: #61dcfb;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+body {
+  background-color: var(--background-black);
+  color: var(--title);
+}
+
+body, input, textarea, select, button {
+  font: 400 1rem 'Roboto', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
