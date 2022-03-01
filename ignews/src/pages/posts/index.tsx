@@ -12,7 +12,7 @@ type Post = {
   slug: string;
   title: string;
   excerpt: string;
-  updateAt: string;
+  updatedAt: string;
 };
 
 interface PostProps {
@@ -29,9 +29,9 @@ export default function Posts({ posts }: PostProps) {
       <main className={styles.container}>
         <div className={styles.posts}>
           {posts.map((post) => (
-            <Link href={`/posts/${post.slug}`}>
+            <Link href={`/posts/${post.slug}`} key={post.slug}>
               <a key={post.slug}>
-                <time>{post.updateAt}</time>
+                <time>{post.updatedAt}</time>
                 <strong>{post.title}</strong>
                 <p>{post.excerpt}</p>
               </a>
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
       excerpt:
         post.data.content.find((content) => content.type === 'paragraph')
           ?.text ?? '',
-      updateAt: new Date(post.last_publication_date).toLocaleDateString(
+      updatedAt: new Date(post.last_publication_date).toLocaleDateString(
         'pt-BR',
         {
           day: '2-digit',
